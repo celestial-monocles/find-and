@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Combined Tool</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+
+    iframe {
+      border: none;
+      width: 100%;
+    }
+
+    #findReplace {
+      flex: 1;
+      min-height: 400px;
+    }
+
+    #textSplitter {
+      flex: 1;
+      min-height: 400px;
+    }
+
+    h2 {
+		font-size: 10px;
+      margin: 0;
+      padding: 0.5em;
+      background-color: #f0f0f0;
+      border-bottom: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h2>Find and Replace</h2>
+  <iframe id="findReplace" src="https://celestial-monocles.github.io/findnreplace/"></iframe>
+
+  <h2>Text Splitter</h2>
+  <iframe id="textSplitter" src="https://celestial-monocles.github.io/textsplittercc/"></iframe>
+</body>
+</html>
