@@ -83,8 +83,23 @@
 	#matchWordsContainer {
 	  display: flex;
 	  justify-content: center;
-	  gap: 20px; /* spacing between Match Case and Words */
-	  margin-top: 10px;
+	  gap: 30px; /* Increased gap for better spacing */
+	  margin-top: 15px;
+	}
+
+	.checkbox-group {
+	  text-align: center;
+	}
+
+	.checkbox-group div {
+	  margin-bottom: 5px;
+	  color: #B5AEE8;
+	}
+
+	#matchWordsContainer input[type="checkbox"] {
+	  width: auto;
+	  margin: 0 auto;
+	  transform: scale(1.3); /* Makes the checkboxes slightly larger */
 	}
 	
 	#replacementSection {
@@ -185,7 +200,22 @@
 	#numSplitContainer input {
 	  width: 80px;
 	  margin-top: 5px;
-}
+	}
+	
+	#lineGapContainer {
+	  text-align: center;
+	  margin-top: 10px;
+	}
+
+	#lineGapContainer div {
+	  margin-bottom: 5px;
+	  color: #B5AEE8; /* Match your text color */
+	}
+
+	#lineGap {
+	  width: auto; /* Remove any fixed width */
+	  margin: 0 auto; /* Center the checkbox */
+	}
 
     .section {
       max-width: 800px;
@@ -223,7 +253,6 @@
 	  user-select: none;       /* prevent accidental text selection */
 	  touch-action: manipulation; /* improve tap responsiveness */
 	}
-
 
     .drag-handle {
       cursor: move;
@@ -328,8 +357,14 @@
 		  <button id="clearFindBtn" onclick="clearFindReplaceInputs()">Clear</button>
 		</div>
 		<div id="matchWordsContainer">
-		  <label><input type="checkbox" id="matchCase"> Match Case</label>
-		  <label><input type="checkbox" id="wholeWords"> Whole Words</label>
+		  <div class="checkbox-group">
+			<div>Match Case</div>
+			<input type="checkbox" id="matchCase">
+		  </div>
+		  <div class="checkbox-group">
+			<div>Whole Words</div>
+			<input type="checkbox" id="wholeWords">
+		  </div>
 		</div>
     </div>
 	
@@ -367,8 +402,10 @@
 	  <input id="splitNumber" type="number" min="1" placeholder="2" />
 	</div>
 
-    <label id="lineText" for="lineGap">Line Gaps</label>
-    <input id="lineGap" type="checkbox" />
+	<div id="lineGapContainer" style="text-align: center; margin-top: 10px;">
+	  <div>Line Gaps</div>
+	  <input id="lineGap" type="checkbox">
+	</div>
 
 	<div id="splitButtonsContainer">
 	  <button id="splitTextButton" onclick="splitText()">Split Text</button>
