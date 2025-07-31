@@ -259,6 +259,12 @@
       font-size: 18px;
       color: #B287CC;
     }
+	
+	#resultText {
+	  background-color: #E8D9FF; /* light purple */
+	  color: #000; /* readable on light background */
+	}
+
 
     /* Text Splitter Specific Styles */
     .output-container {
@@ -270,7 +276,7 @@
 
     .output-box {
       width: 100%;
-      background-color: #E0D7DE;
+      background-color: #B8C3E0;
       color: #000;
       resize: vertical;
       margin-bottom: 10px;
@@ -280,6 +286,53 @@
       font-weight: bold;
       cursor: pointer;
     }
+	
+	/* Text Splitter Section Text Color */
+	#textSplitterApp {
+	  color: #90BFE0;
+	}
+
+	/* Buttons should keep their original colors */
+	#textSplitterApp button {
+	  color: white;
+	}
+
+	/* Specific text elements in Text Splitter */
+	#textSplitterApp label,
+	#textSplitterApp #charCount,
+	#textSplitterApp .output-container div,
+	#textSplitterApp #numSplitContainer label,
+	#textSplitterApp #lineGapContainer div {
+	  color: #90BFE0;
+	}
+
+	/* Textarea placeholder color */
+	#textSplitterApp textarea::placeholder {
+	  color: #90BFE0;
+	  opacity: 0.7;
+	}
+	
+	/* Text Splitter buttons - cyan text */
+	#textSplitterApp #splitTextButton,
+	#textSplitterApp .copy-button {
+	  color: #46D1E0;
+	  background-color: #1f1f1f; /* Dark background for contrast */
+	  border: 1px solid #46D1E0; /* Optional: adds border matching text color */
+	}
+
+	/* Keep Clear Input button with white text */
+	#textSplitterApp #clearSplitButton {
+	  color: white;
+	  background-color: #A84A46; /* Keep original red background */
+	  border: none; /* Remove border if added above */
+	}
+
+	/* Hover effects for cyan buttons */
+	#textSplitterApp #splitTextButton:hover,
+	#textSplitterApp .copy-button:hover {
+	  background-color: #46D1E0;
+	  color: #1f1f1f; /* Dark text on hover */
+	}
 	
 	#navButtons {
 	  position: fixed;
