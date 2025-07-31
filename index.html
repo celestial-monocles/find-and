@@ -187,7 +187,6 @@
 	  margin-top: 5px;
 }
 
-
     .section {
       max-width: 800px;
       margin: 0 auto 60px;
@@ -288,16 +287,25 @@
 
 
     @media (max-width: 768px) {
-      button {
-        width: 100%;
-      }
-    }
+	  #exportImportButtons button {
+		display: block;
+		width: 100%;
+		margin: 5px 0; /* Add vertical margin between stacked buttons */
+	  }
+
+	  #addClearContainer button {
+		display: block;
+		width: 100%;
+		margin: 5px 0; /* Add vertical margin here as well if needed */
+	  }
+	}
+
   </style>
 </head>
 <body>
 	<div id="navButtons">
-	  <button onclick="scrollToSection('findReplaceApp')">⬆</button>
-	  <button onclick="scrollToSection('textSplitterApp')">⬇</button>
+	  <button onclick="scrollToSection('findReplaceApp')">↑</button>
+	  <button onclick="scrollToSection('textSplitterApp')">↓</button>
 	</div>
 
 
