@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Combined Tool: Find & Replace + Text Splitter</title>
   <style>
     * {
@@ -25,6 +25,11 @@
       color: #B5AEE8;
       text-decoration: none;
     }
+	
+	input, textarea, select {
+	  font-size: 16px;
+	  touch-action: manipulation;
+	}
 
     button {
       background-color: #B287CC;
@@ -360,11 +365,14 @@
 	  align-items: center;
 	  justify-content: center;
 	  transition: opacity 0.3s ease;
+	  box-shadow: 0 0 0 rgba(183, 174, 232, 0); /* Initial transparent glow */
 	}
 
 
 	#navButtons button:hover {
 	  opacity: 1;
+	  box-shadow: 0 0 10px 3px rgba(183, 174, 232, 0.7); /* Glow effect */
+	  transform: scale(1.05); /* Optional slight scale increase */
 	}
 
 
