@@ -271,73 +271,76 @@
 	}
 
 
-    /* Text Splitter Specific Styles */
-    .output-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
+  /* Text Splitter Specific Styles */
+	  .output-container {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	  }
 
-    .output-box {
-      width: 100%;
-      background-color: #B8C3E0;
-      color: #000;
-      resize: vertical;
-      margin-bottom: 10px;
-    }
+	  .output-box {
+		width: 100%;
+		background-color: #B8C3E0;
+		color: #000;
+		resize: vertical;
+		margin-bottom: 10px;
+	  }
 
-    .copy-button {
-      font-weight: bold;
-      cursor: pointer;
-    }
-	
-	/* Text Splitter Section Text Color */
-	#textSplitterApp {
-	  color: #90BFE0;
-	}
+	  .copy-button {
+		font-weight: bold;
+		cursor: pointer;
+	  }
+	  
+	  /* Text Splitter Section Text Color */
+	  #textSplitterApp {
+		color: #90BFE0;
+	  }
 
-	/* Buttons should keep their original colors */
-	#textSplitterApp button {
-	  color: white;
-	}
+	  /* Buttons should keep their original colors */
+	  #textSplitterApp button {
+		color: white;
+	  }
 
-	/* Specific text elements in Text Splitter */
-	#textSplitterApp label,
-	#textSplitterApp #charCount,
-	#textSplitterApp .output-container div,
-	#textSplitterApp #numSplitContainer label,
-	#textSplitterApp #lineGapContainer div {
-	  color: #90BFE0;
-	}
+	  /* Specific text elements in Text Splitter */
+	  #textSplitterApp label,
+	  #textSplitterApp #charCount,
+	  #textSplitterApp .output-container div,
+	  #textSplitterApp #numSplitContainer label,
+	  #textSplitterApp #lineGapContainer div {
+		color: #90BFE0;
+	  }
 
-	/* Textarea placeholder color */
-	#textSplitterApp textarea::placeholder {
-	  color: #90BFE0;
-	  opacity: 0.7;
-	}
-	
-	/* Text Splitter buttons - cyan text */
-	#textSplitterApp #splitTextButton,
-	#textSplitterApp .copy-button {
-	  color: #46D1E0;
-	  background-color: #1f1f1f; /* Dark background for contrast */
-	  border: 1px solid #46D1E0; /* Optional: adds border matching text color */
-	}
+	  /* Textarea placeholder color */
+	  #textSplitterApp textarea::placeholder {
+		color: #90BFE0;
+		opacity: 0.7;
+	  }
+	  
+	  /* Text Splitter buttons - cyan text */
+	  #textSplitterApp #splitTextButton,
+	  #textSplitterApp .copy-button,
+	  #textSplitterApp .paste-button {
+		color: #46D1E0;
+		background-color: #1f1f1f;
+		border: 1px solid #46D1E0;
+	  }
 
-	/* Keep Clear Input button with white text */
-	#textSplitterApp #clearSplitButton {
-	  color: white;
-	  background-color: #A84A46; /* Keep original red background */
-	  border: none; /* Remove border if added above */
-	}
+	  /* Keep Clear Input button with white text */
+	  #textSplitterApp #clearSplitButton {
+		color: white;
+		background-color: #A84A46;
+		border: none;
+	  }
 
-	/* Hover effects for cyan buttons */
-	#textSplitterApp #splitTextButton:hover,
-	#textSplitterApp .copy-button:hover {
-	  background-color: #46D1E0;
-	  color: #1f1f1f; /* Dark text on hover */
-	}
+	  /* Hover effects for cyan buttons */
+	  #textSplitterApp #splitTextButton:hover,
+	  #textSplitterApp .copy-button:hover,
+	  #textSplitterApp .paste-button:hover {
+		background-color: #46D1E0;
+		color: #1f1f1f;
+	  }
+
 	
 	#navButtons {
 	  position: fixed;
@@ -375,6 +378,28 @@
 	  transform: scale(1.05); /* Optional slight scale increase */
 	}
 
+    /* New styles for paste buttons */
+    .textarea-container {
+      position: relative;
+    }
+    
+    .paste-button {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      background-color: #B287CC;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      z-index: 10;
+    }
+    
+    .paste-button:hover {
+      background-color: #A84B8C;
+    }
 
     @media (max-width: 768px) {
 	  #exportImportButtons button {
@@ -387,6 +412,12 @@
 		display: block;
 		width: 100%;
 		margin: 5px 0; /* Add vertical margin here as well if needed */
+	  }
+	  
+	  /* Make paste buttons more prominent on mobile */
+	  .paste-button {
+	    padding: 8px 12px;
+	    font-size: 16px;
 	  }
 	}
 
@@ -402,7 +433,10 @@
   <!-- FIND AND REPLACE SECTION -->
   <div class="section" id="findReplaceApp">
     <h1><a href="https://celestial-monocles.github.io/findandreplace/">Find and Replace Text</a></h1>
-    <textarea id="inputText" rows="10" placeholder="Enter your text here..."></textarea><br>
+    <div class="textarea-container">
+      <textarea id="inputText" rows="10" placeholder="Enter your text here..."></textarea>
+      <button class="paste-button" onclick="pasteToTextarea('inputText')">Paste</button>
+    </div>
     <button id="clearBtn" onclick="clearInputText()">Clear Input</button>
 
     <h2><button onclick="toggleFindReplaceSection()" id="toggleFindReplaceBtn">▼ Find and Replace List</button></h2>
@@ -435,8 +469,6 @@
 	  </button>
 	</div>
 
-
-
 	
     <button onclick="replaceText()">Replace</button><br><br>
 
@@ -454,8 +486,10 @@
   <!-- TEXT SPLITTER SECTION -->
   <div class="section" id="textSplitterApp">
     <h1>Text Splitter</h1>
-    <label for="splitInput">Paste your text here:</label>
-    <textarea id="splitInput" rows="10" placeholder="Paste your text here..." oninput="updateCharCount()"></textarea>
+    <div class="textarea-container">
+      <textarea id="splitInput" rows="10" placeholder="Paste your text here..." oninput="updateCharCount()"></textarea>
+      <button class="paste-button" onclick="pasteToTextarea('splitInput')">Paste</button>
+    </div>
     <div id="charCount">Character Count: 0</div>
 
 	<div id="numSplitContainer">
@@ -664,7 +698,26 @@
 	  }
 	}
 
-
+    // New paste function for both textareas
+    async function pasteToTextarea(textareaId) {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById(textareaId).value = text;
+        
+        // Update character count if it's the splitInput
+        if (textareaId === 'splitInput') {
+          updateCharCount();
+        }
+        
+        // Show copy button if it's the inputText
+        if (textareaId === 'inputText') {
+          toggleCopyButtonVisibility();
+        }
+      } catch (err) {
+        console.error('Failed to read clipboard contents: ', err);
+        alert('Failed to paste. Please paste manually or check browser permissions.');
+      }
+    }
 
     new Sortable(document.getElementById('findReplaceContainer'), {
       animation: 150,
