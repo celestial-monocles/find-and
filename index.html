@@ -315,9 +315,32 @@
       color: #d4b3e6;
     }
     
+    /* --- Result box container with relative positioning for counter --- */
+    .result-wrapper {
+      position: relative;
+      width: 100%;
+    }
+    
     #resultText {
       background-color: #E8D9FF;
       color: #000;
+      margin-bottom: 0; /* remove extra space, counter sits inside */
+    }
+    
+    .result-char-counter {
+      position: absolute;
+      bottom: 6px;
+      right: 12px;
+      background-color: rgba(0, 0, 0, 0.6);
+      color: #f0f0f0;
+      font-size: 13px;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-family: monospace;
+      pointer-events: none; /* allow clicking through to textarea */
+      z-index: 5;
+      backdrop-filter: blur(2px);
+      border: 1px solid #5a5a5a;
     }
 
     /* Text Splitter Specific Styles */
@@ -522,7 +545,11 @@
     <button onclick="replaceText()">Replace</button><br><br>
 
     <h2>Result:</h2>
-    <textarea id="resultText" rows="10" readonly></textarea>
+    <!-- Wrapper for result textarea + character counter -->
+    <div class="result-wrapper">
+      <textarea id="resultText" rows="10" readonly oninput="updateResultCounter()" onchange="updateResultCounter()"></textarea>
+      <span id="resultCharCounter" class="result-char-counter">0</span>
+    </div>
     <div id="copyButtonContainer" style="text-align:center;">
       <button id="copyButton" onclick="copyResultText()" style="display:none;">Copy Result</button>
     </div>
@@ -733,6 +760,15 @@
       renderPairsFromArray([]); // This will create one empty pair automatically
     }
 
+    // Update result character counter
+    function updateResultCounter() {
+      const resultText = document.getElementById("resultText");
+      const counter = document.getElementById("resultCharCounter");
+      if (resultText && counter) {
+        counter.textContent = resultText.value.length;
+      }
+    }
+
     function replaceText() {
       let text = document.getElementById("inputText").value;
       text = text.replace(/[\u2028\u2029\u0085\u000B\u000C]/g, '\n').replace(/\r\n|\r/g, '\n');
@@ -762,6 +798,7 @@
 
       const resultText = document.getElementById("resultText");
       resultText.value = text;
+      updateResultCounter(); // <-- update counter after replace
       toggleCopyButtonVisibility();
 
       const replacementDetails = document.getElementById("replacementDetails");
@@ -946,6 +983,7 @@
     window.addEventListener('DOMContentLoaded', () => {
       renderPairsFromArray([{ find: '', replace: '' }]);
       toggleCopyButtonVisibility();
+      updateResultCounter(); // initial counter update
 
       const section = document.getElementById("findReplaceSection");
       const btnTop = document.getElementById("toggleFindReplaceBtn");
